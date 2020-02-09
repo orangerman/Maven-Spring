@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+
+
+    <util:list id="cars">
+        <ref bean="car"/>
+        <ref bean="car2"/>
+    </util:list>
+    <bean id="person" class="beans.Person">
+        <property name="name" value="JavaFan"/>
+        <property name="age" value="15"/>
+
+    </bean>
+    <bean id="person2" class="beans.Person" p:name="Jerry" p:age="25" p:car-ref="car">
+    </bean>
+    <bean id="car" class="beans.Car">
+        <property name="brand" value="dazhong"/>
+        <property name="price" value="300000"/>
+        <property name="maxspeed" value="150"/>
+    </bean>
+    <bean id="car2" class="beans.Car">
+        <property name="brand" value="audi"/>
+        <property name="price" value="500000"/>
+        <property name="maxspeed" value="250"/>
+    </bean>
+
+
+    <!--bean配置的继承 使用bean的parent来继承 parent="address"
+    abstract="true"抽象bean只能被继承不能实例化-->
+    <bean id="address" class="beans.Address" p:city="anhui" p:street="dawa"/>
+    <bean id="address2" class="beans.Address" parent="address" p:street="miaoyuan"/>
+
+    <!--要求配置person时候，必须有一个关联的car person这个bean依赖于Car这个bean -->
+    <bean id="person3" class="beans.Person" p:name="javafan" p:age="18" p:address-ref="address" depends-on="car"/>
+
+
+</beans>

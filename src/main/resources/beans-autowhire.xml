@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="address" class="beans.Address" p:city="anhui" p:street="dawa">
+    </bean>
+
+    <bean id="car" class="beans.Car" p:brand="dazhong" p:price="2500000" p:maxspeed="300">
+    </bean>
+
+    <!--可以使用autowire属性指定自动装配的方式，ByName 和
+    ByType(若有相同类型的两个及以上bean则无法装配 则抛异常) -->
+    <bean id="person" class="beans.Person" p:name="Tome" autowire="byName"/>
+</beans>
