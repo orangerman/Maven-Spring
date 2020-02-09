@@ -12,5 +12,9 @@ public class Main {
         System.out.println(result);
 
 
+        result = calculator.div(100, 12);
+        System.out.println(result);
+
+
     }
 }
